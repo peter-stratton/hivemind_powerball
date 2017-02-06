@@ -61,11 +61,13 @@ user=# \q
 
 run the database migrations using the `local` settings
 ```bash
+$ cd hivemind_powerball
 $ python manage.py migrate --settings=config.settings.local
 ```
 
 run the server using the `local` settings
 ```bash
+$ cd hivemind_powerball
 $ python manage.py runserver --settings=config.settings.local
 ```
 
@@ -79,11 +81,13 @@ When you're finished, type `ctrl-c`
 ####Useful Local Commands
 Running the unit tests
 ```bash
+$ cd hivemind_powerball
 $ python manage.py test --settings=config.settings.local
 ```
 
 Connect to project database
 ```bash
+$ cd hivemind_powerball
 $ python manage.py dbshell --settings=config.settings.local
 ```
 
