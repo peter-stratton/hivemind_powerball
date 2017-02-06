@@ -1,21 +1,39 @@
+# I would like to store all my co-workers 6 favorite numbers to use as a
+# composite company powerball ticket number. First I capture the name of the
+# co-worker entering the number. The first 5 favorite numbers will need to be
+# in the range of 1 to 69 and unique. The 6th favorite number will need to be
+# in the range of 1 to 26 and flagged as the 6th Powerball number. The system
+# should keep count of each individual favorite number provided to determine
+# which numbers to use in the final number. The system should retrieve the max
+# count of each unique duplicate number and use them as the powerball numbers.
+# If there is a tie based on the max counts randomly select the tied number.
+# The system should display all co-workers with their corresponding number
+# entries.  The system should display the final powerball number based on the
+# requirements above.
+
+import unittest
+
 from selenium import webdriver
 
-browser = webdriver.Firefox()
-browser.get('http://127.0.0.1:8000')
 
-assert 'Django' in browser.title
+class WadeWilsonTest(unittest.TestCase):
 
-# I would like to store all my co-workers 6 favorite numbers to use as a composite company powerball ticket number.
-# First I capture the name of the co-worker entering the number.
-# The first 5 favorite numbers will need to be in the range of 1 to 69 and unique.
-# 6th favorite number will need to be in the range of 1 to 26 and flagged as the 6th Powerball number.
-# The system should keep count of each individual favorite number provided to determine which numbers to use in the final number.
-# The system should retrieve the max count of each unique duplicate number and use them as the powerball numbers.
-# If there is a tie based on the max counts randomly select the tied number.
-# The system should display all co-workers with their corresponding number entries.
-# The system should display the final powerball number based on the requirements above.
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
-# My co-worker Wade Wilson wants in!  First he navigates to the start page.
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_landing_page_loads_correctly(self):
+        # My co-worker Wade Wilson wants in!
+        # First he navigates to the start page.
+        self.browser.get('http://127.0.0.1:8000')
+
+        # The page title is mentions powerball
+        self.assertIn('POWERBALL', self.browser.title.upper())
+        self.fail('Finish the test!')
+
 
 # He enters his first name: Wade
 
@@ -33,7 +51,7 @@ assert 'Django' in browser.title
 
 # He selects his POWERBALL number: 16
 
-# My co-worker Frank Castle is totally down!  First he navigates to the start page.
+# My co-worker Frank Castle signs up!  First he navigates to the start page.
 
 # He enters his first name: Frank
 
@@ -67,5 +85,7 @@ assert 'Django' in browser.title
 # +----|-------+
 # | 16 | 2     |
 #
-# The composite powerball number therefore contains: 15, 26, 34, *, *, POWERBALL: 16
+# The composite powerball number is: 15, 26, 34, *, *, POWERBALL: 16
 
+if __name__ == '__main__':
+    unittest.main()
