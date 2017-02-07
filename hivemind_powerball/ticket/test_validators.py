@@ -56,7 +56,3 @@ class ValidatorsTest(TestCase):
         with self.assertRaisesRegex(ValidationError,
                                     '0 is not within range 1 to 26'):
             within_red_range(0)
-
-
-
-

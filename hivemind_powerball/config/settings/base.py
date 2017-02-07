@@ -52,6 +52,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 1st party
     'hive.apps.HiveConfig',
+    'ticket.apps.TicketConfig',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
