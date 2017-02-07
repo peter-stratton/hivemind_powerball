@@ -25,12 +25,12 @@ class WadeWilsonTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_landing_page_loads_correctly(self):
+    def test_registration_page_loads_correctly(self):
         # My co-worker Wade Wilson wants in!
         # First he navigates to the start page.
         self.browser.get('http://127.0.0.1:8000')
 
-        # The page title is mentions powerball
+        # The page title mentions powerball
         self.assertIn('POWERBALL', self.browser.title.upper())
         self.fail('Finish the test!')
 

@@ -19,6 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^hive/', include('hive.urls', namespace='hive')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+    All The Drones
+{% endblock %}
+
+{% block content %}
+
+    <table class="table">
+        {% for drone in drone_list %}
+            <tr>
+                <td>{{ drone.id }} - {{ drone.full_name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# <hr> #}
+    {#  #}
+    {# {% bootstrap_pagination lines url="/pagination?page=1&flop=flip" extra="q=foo" size="small" %} #}
+    {#  #}
+    {# {% bootstrap_pagination lines url="/pagination?page=1" size="large" %} #}
+
+{% endblock %}

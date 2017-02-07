@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+    {{ drone.full_name }}
+{% endblock %}
+
+{% block content %}
+
+    <p>id: {{ drone.id }}</p>
+    <p>first name: {{ drone.first_name }}</p>
+    <p>last name: {{ drone.last_name }}</p>
+
+{% endblock %}

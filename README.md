@@ -83,6 +83,14 @@ Running the unit tests
 ```bash
 $ cd hivemind_powerball
 $ python manage.py test --settings=config.settings.local
+$ python manage.py test -v 2 --settings=config.settings.local
+```
+
+Generating Test Coverage
+```bash
+$ cd hivemind_powerball
+$ coverage run manage.py test --settings=config.settings.local
+$ coverage html --omit="admin.py" && open coverage_html_report/index.html
 ```
 
 Connect to project database
