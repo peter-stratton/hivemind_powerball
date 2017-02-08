@@ -20,6 +20,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hive/', include('hive.urls', namespace='hive')),
+    url(r'^ticket/', include('ticket.urls', namespace='ticket')),
 ]
 
 if settings.DEBUG:

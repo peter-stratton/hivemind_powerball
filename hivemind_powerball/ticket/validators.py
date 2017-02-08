@@ -3,6 +3,12 @@ from functools import partial
 from django.core.exceptions import ValidationError
 
 
+def has_duplicates(a_list):
+    unique = set(a_list)
+    if len(unique) != len(a_list):
+        return True
+
+
 def _within_range(value, lowbound, highbound):
     if value not in range(lowbound, highbound + 1):
         raise ValidationError('{} is not within range {} to {} (inclusive)'
