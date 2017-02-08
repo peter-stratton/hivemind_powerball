@@ -1,14 +1,23 @@
-{% extends 'bootstrap.html' %}
+{% load static %}<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    {% block stylesheet %}{% endblock %}
+  </head>
+  <body>
+    {% block header %}<header></header>{% endblock %}
 
-{% load bootstrap3 %}
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
 
-{% block bootstrap3_content %}
-    <div class="container">
-        <h1>{% block title %}(no title){% endblock %}</h1>
+    {% block footer %}<footer></footer>{% endblock %}
 
-        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
-
-        {% block content %}(no content){% endblock %}
-    </div>
-
-{% endblock %}
+    {% block javascript %}
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	{% endblock %}
+  </body>
+</html>

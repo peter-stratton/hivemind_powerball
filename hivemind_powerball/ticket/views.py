@@ -1,7 +1,8 @@
 # ticket/views.py
+import json
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 
 from .forms import TicketForm
 from hive.models import Drone
@@ -9,7 +10,7 @@ from .models import WhiteBall, RedBall
 
 
 def new_ticket(request):
-    if request.method == 'POST':
+    if request.is_ajax() and request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -19,7 +20,11 @@ def new_ticket(request):
             for val in white_vals:
                 drone.whiteball_set.create(value=val)
             drone.redball_set.create(value=data['red1'])
-            return HttpResponseRedirect('/hive/drones/')
+            return HttpResponse(json.dumps({'drone_name': drone.full_name,
+                                            'white_vals': white_vals,
+                                            'red_val': data['red1']}),
+                                content_type="application/json")
+
     else:
         form = TicketForm()
 

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Title Here{% endblock %}
+
+{% block content %}
+    <h1>My Content</h1>
+	<div class="container">
+        <div class="container">
+			<h3>Golden Ticket</h3>
+            {{ golden_ticket }}
+		</div>
+		<div class="container">
+			<h3>Drone Tickets:</h3>
+            <table id="drone-table">
+                <thead>
+                    <tr>
+                        {% for header in drones.headers %}
+                            <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for value in drones.rows %}
+                    <tr>    
+                            <td>{{ value.0 }}</td>
+                            <td>{{ value.1 }}</td>
+                            <td>{{ value.2 }}</td>
+                    </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+		</div>
+		<div class="container">
+			<h3>Add Ticket</h3>
+            <form action="/ticket/add/" method="POST" id="ticket-form">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn add-ticket">Add Ticket</button>
+            </form>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script type="text/javascript" src={% static "js/csrf.js" %}></script>
+    <script type="text/javascript" src={% static "js/ticket.js" %}></script>
+{% endblock %}
