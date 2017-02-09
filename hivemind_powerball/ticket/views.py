@@ -2,11 +2,12 @@
 import json
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 
 from .forms import TicketForm
 from hive.models import Drone
 from .models import WhiteBall, RedBall
+from .utils import get_golden_ticket
 
 
 def new_ticket(request):
@@ -20,12 +21,13 @@ def new_ticket(request):
             for val in white_vals:
                 drone.whiteball_set.create(value=val)
             drone.redball_set.create(value=data['red1'])
+            golden_ticket = get_golden_ticket()
             return HttpResponse(json.dumps({'drone_name': drone.full_name,
                                             'white_vals': white_vals,
-                                            'red_val': data['red1']}),
+                                            'red_val': data['red1'],
+                                            'golden_ticket': golden_ticket}),
                                 content_type="application/json")
-
+        else:
+            return HttpResponse(form.errors.as_json)
     else:
-        form = TicketForm()
-
-    return render(request, 'ticket/ticket_form.html', {'form': form})
+        raise Http404

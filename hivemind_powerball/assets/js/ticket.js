@@ -6,6 +6,9 @@ $(document).ready(function() {
 		create_ticket();
 	});
 
+    function success() { console.log('SUCCESS!'); }
+    function error() { console.log('FAIL!') }
+
 	function create_ticket() {
 		console.log("create ticket is working")  // sanity check
 		$.ajax({
@@ -21,17 +24,21 @@ $(document).ready(function() {
 				white5: $('#id_white5').val(),
 				red1: $('#id_red1').val(),
 			},
+            error: function(xhr) {
+            	console.log(xhr.status + ": " + xhr.responseText);
+			},
 			success: function(json) {
 				console.log(json);
 				console.log("Success!");
+                var whitenums = JSON.stringify(json['golden_ticket'][0], null, 2).slice(2, -2).trim()
+                var rednum = JSON.stringify(json['golden_ticket'][1], null, 2).slice(2, -2).trim()
 				$('#ticket-form')[0].reset();
-                $('#drone-table tr:last').after('<tr><td>' + json['drone_name'] + '</td>' +
-                                                    '<td>[' + JSON.stringify(json['white_vals'], null, 2).slice(2, -2).trim() + ']</td>' +
-                                                    '<td>' + json['red_val'] + '</td></tr>')
-			},
-			error: function(xhr) {
-            	console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                $('#drone-table tr:first').after('<tr><td>' + json['drone_name'] + '</td>' + 
+                    '<td>[' + JSON.stringify(json['white_vals'], null, 2).slice(2, -2).trim() + ']' +
+                    '[' + JSON.stringify(json['red_val'], null, 2).trim() + ']</td></tr>');
+                $('#golden-ticket').text('[' + whitenums + '][' + rednum + ']');
 			}
+			
 		});
 	};
 });

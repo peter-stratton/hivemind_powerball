@@ -1,17 +1,10 @@
 {% extends 'base.html' %}
-
-{% load bootstrap3 %}
-
-{% block title %}
-    Execute Drone
-{% endblock %}
-
 {% block content %}
 
     <form role="form" method="post">
         {% csrf_token %}
         {{ drone.full_name }}
-        {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+        {# need buttons #}
     </form>
 
 {% endblock %}
