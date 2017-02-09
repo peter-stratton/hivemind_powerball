@@ -100,6 +100,8 @@ $ python manage.py dbshell --settings=config.settings.local
 ```
 
 ##Running the Functional Tests
+**NOTE: Due to a change in firefox, the functional tests no longer launch a browser.  While I haven't figured out a workaround, I decided to leave the incomplete test in place.**
+
 ####System Requirements
 * firefox
 * geckodriver

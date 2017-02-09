@@ -10,6 +10,7 @@ class Drone(models.Model):
 
     @property
     def full_name(self):
+        """str: returns the full name with first letters capitalized"""
         return '{} {}'.format(self.first_name, self.last_name).title()
 
     def get_absolute_url(self):  # pragma: no cover

@@ -1,3 +1,5 @@
+# dashboard/views.py
+
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
 
@@ -7,6 +9,7 @@ from hive.models import Drone
 
 
 def main_view(request):
+    """Primary application view, '/' redirects here"""
     ticket = get_golden_ticket()
     drones = Drone.objects.all()
     drone_list = []
