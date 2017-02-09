@@ -12,8 +12,8 @@ $(document).ready(function() {
         $('.error-alert').remove();
         $('#ticket-form')[0].reset();
         $('#drone-table tr:first').after('<tr><td>' + jsondata['drone_name'] + '</td>' + 
-            '<td>[' + JSON.stringify(jsondata['white_vals'], null, 2).slice(2, -2).trim() + ']' +
-            '[' + JSON.stringify(jsondata['red_val'], null, 2).trim() + ']</td></tr>');
+            '<td class="numbers">[' + JSON.stringify(jsondata['white_vals'], null, 2).slice(2, -2).trim() + ']' +
+            '<span class="powerball">[' + JSON.stringify(jsondata['red_val'], null, 2).trim() + ']</span></td></tr>');
         $('#golden-ticket').replaceWith('<h4 id="golden-ticket" class="numbers">[' +
             whitenums + ']<span class="powerball">[' + rednum + ']</span></h4>');
     }
