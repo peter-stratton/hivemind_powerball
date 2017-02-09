@@ -20,13 +20,11 @@ $(document).ready(function() {
     function form_invalid(jsondata) {
         $('.error-alert').remove();
         for(var e in jsondata['error_list']) {
-            console.log(e)
             $("#form-errors").append('<div class="error-alert">'+ jsondata['error_list'][e] +'</div>')
         }
     }
 
 	function create_ticket() {
-		console.log("create ticket is working")  // sanity check
 		$.ajax({
 			type: "POST",
 			url: "/ticket/add/",
@@ -42,10 +40,8 @@ $(document).ready(function() {
 			},
 			success: function(json) {
                 if(json['status'] === 'success') {
-                    console.log("Success!");
                     form_processed(json)
                 } else {
-                    console.log("Failed!")
                     form_invalid(json)
                 }
             },

@@ -1,5 +1,14 @@
 /* app.cs */
 
+/* Content Boxes */
+.hive-ticket {
+    border-top: 1px solid #E1E1E1;
+    border-bottom: 1px solid #E1E1E1;
+    border-radius: 4px;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 /* Alert Boxes */
 .error-alert {
     background: #FC000080;
@@ -8,4 +17,9 @@
     font-weight: 600;
     letter-spacing: .1rem;
     margin-bottom: 2rem;
+}
+
+/* Typography */
+.numbers {
+    font-family: 'Roboto Mono', monospace;
 }

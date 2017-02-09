@@ -10,12 +10,12 @@
 {% block content %}
   <div class="container">
 
-    <div class="row">
-      <div class="three columns">
-        <h4>Hive Ticket:</h4>
+    <div class="row hive-ticket">
+      <div class="six columns">
+        <h4><strong>Hive Ticket:</strong></h4>
       </div>
-      <div class="nine columns">
-        <h4 id="golden-ticket">{{ golden_ticket.0 }}{{ golden_ticket.1 }}</h4>
+      <div class="six columns">
+        <h4 id="golden-ticket" class="numbers">{{ golden_ticket.0 }}{{ golden_ticket.1 }}</h4>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
 			{% for value in drones.rows %}
 			  <tr>    
 			    <td>{{ value.0 }}</td>
-			      <td>{{ value.1.0 }}{{ value.1.1 }}</td>
+			      <td class="numbers">{{ value.1.0 }}{{ value.1.1 }}</td>
 			  </tr>
 			{% endfor %}
 		  </tbody>
