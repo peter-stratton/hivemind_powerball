@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.exceptions import ValidationError
 
 from .validators import _within_range, within_white_range, within_red_range
+from .validators import has_duplicates
 
 
 class ValidatorsTest(TestCase):
@@ -56,3 +57,9 @@ class ValidatorsTest(TestCase):
         with self.assertRaisesRegex(ValidationError,
                                     '0 is not within range 1 to 26'):
             within_red_range(0)
+
+    def test_has_duplicates_passes_lists_without_dupes(self):
+        self.assertFalse(has_duplicates([1,2,3,4,5]))
+
+    def test_has_duplicates_fails_lists_with_dupes(self):
+        self.assertTrue(has_duplicates([1,1,2,3,4,5]))

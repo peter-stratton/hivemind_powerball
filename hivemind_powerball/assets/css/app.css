@@ -23,3 +23,11 @@
 .numbers {
     font-family: 'Roboto Mono', monospace;
 }
+
+.header {
+    padding-top: 2rem;
+}
+
+.powerball {
+    color: red;
+}

@@ -12,7 +12,7 @@ do
     if [ $? == 0 ]; then
         PG_NOT_READY=false
         python manage.py migrate --settings=config.settings.containerized
-        python manage.py test --settings=config.settings.containerized
+        python manage.py test -v 2 --settings=config.settings.containerized
         python manage.py runserver 0.0.0.0:8000 --settings=config.settings.containerized
     fi
     COUNTER=`expr $COUNTER + 1`

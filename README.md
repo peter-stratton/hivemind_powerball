@@ -1,6 +1,6 @@
 Hivemind Powerball
 =====================
-Store users' favorite powerball numbers and generate a composite number based on the most frequently selected values.
+Store drones' favorite powerball numbers and generate a composite number based on the most frequently selected values.
 
 ## Installation and Setup
 After cloning this repo, you'll need to decide how you'd like to run the application.  The easiest way is probably 
@@ -90,7 +90,7 @@ Generating Test Coverage
 ```bash
 $ cd hivemind_powerball
 $ coverage run manage.py test --settings=config.settings.local
-$ coverage html --omit="admin.py" && open coverage_html_report/index.html
+$ coverage html --omit="admin.py" && open cov_report/index.html
 ```
 
 Connect to project database
@@ -101,6 +101,7 @@ $ python manage.py dbshell --settings=config.settings.local
 
 ##Running the Functional Tests
 ####System Requirements
+* firefox
 * geckodriver
 
 ####Steps
@@ -109,7 +110,17 @@ As of Firefox 47.0 selenium expects the geckodriver to be on your system path.  
 $ brew install geckodriver
 ```
 
-Run the functional tests:
+Next start the development server using either the docker command:
+```bash
+$ docker-compose up
+```
+
+Or the local command:
+```bash
+$ python manage.py runserver --settings=config.settings.local
+```
+
+Then run the functional tests (incomplete):
 ```bash
 $ cd hivemind_powerball
 $ python functional_tests.py

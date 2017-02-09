@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import url, include
-from django.contrib import admin
+from django.shortcuts import redirect
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^hive/', include('hive.urls', namespace='hive')),
+    url(r'^$', lambda r: redirect('dashboard/')),
     url(r'^ticket/', include('ticket.urls', namespace='ticket')),
     url(r'^dashboard/', include('dashboard.urls', namespace='dashboard')),
 ]

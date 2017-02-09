@@ -18,7 +18,7 @@ from unipath import Path
 from django.core.exceptions import ImproperlyConfigured
 
 
-def get_env_variable(var_name):
+def get_env_variable(var_name):  # pragma: no cover
     """Get the environment variable or return exception."""
     try:
         return os.environ[var_name]

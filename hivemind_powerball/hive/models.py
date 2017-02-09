@@ -12,7 +12,7 @@ class Drone(models.Model):
     def full_name(self):
         return '{} {}'.format(self.first_name, self.last_name).title()
 
-    def get_absolute_url(self):
+    def get_absolute_url(self):  # pragma: no cover
         return reverse('hive:drone-detail', kwargs={'pk': self.pk})
 
     def __str__(self):

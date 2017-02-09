@@ -4,7 +4,7 @@
 {% block title %}Hive Mind Powerball{% endblock %}
 
 {% block header %}
-  <h1>Hive Mind Powerball</h1>
+<h1 class="header">Hive Mind <span class="powerball">Powerball</span></h1>
 {% endblock %}
 
 {% block content %}
@@ -15,13 +15,13 @@
         <h4><strong>Hive Ticket:</strong></h4>
       </div>
       <div class="six columns">
-        <h4 id="golden-ticket" class="numbers">{{ golden_ticket.0 }}{{ golden_ticket.1 }}</h4>
+        <h4 id="golden-ticket" class="numbers">{{ golden_ticket.0 }}<span class="powerball">{{ golden_ticket.1 }}</span></h4>
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <h4>Add Ticket</h4>
+        <h4>Add Drone Ticket</h4>
         <div id="form-errors"></div>
         <div>
           <form action="/ticket/add/" method="POST" id="ticket-form">
@@ -46,7 +46,7 @@
 			{% for value in drones.rows %}
 			  <tr>    
 			    <td>{{ value.0 }}</td>
-			      <td class="numbers">{{ value.1.0 }}{{ value.1.1 }}</td>
+                <td class="numbers">{{ value.1.0 }}<span class="powerball">{{value.1.1 }}</span></td>
 			  </tr>
 			{% endfor %}
 		  </tbody>

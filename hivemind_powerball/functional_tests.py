@@ -16,7 +16,7 @@ import unittest
 from selenium import webdriver
 
 
-class WadeWilsonTest(unittest.TestCase):
+class HiveMindPowerballTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -26,13 +26,15 @@ class WadeWilsonTest(unittest.TestCase):
         self.browser.quit()
 
     def test_registration_page_loads_correctly(self):
-        # My co-worker Wade Wilson wants in!
+        # My co-drone Wade Wilson wants in!
         # First he navigates to the start page.
         self.browser.get('http://127.0.0.1:8000')
 
         # The page title mentions powerball
         self.assertIn('POWERBALL', self.browser.title.upper())
-        self.fail('Finish the test!')
+        # self.fail('Finish the test!')
+
+
 
 
 # He enters his first name: Wade
