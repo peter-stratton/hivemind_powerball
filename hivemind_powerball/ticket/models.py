@@ -1,3 +1,6 @@
+# ticket/models.py
+"""Model classes for Powerball balls"""
+
 from django.db import models
 
 from .validators import within_white_range, within_red_range

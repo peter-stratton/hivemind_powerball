@@ -14,7 +14,8 @@ $(document).ready(function() {
         $('#drone-table tr:first').after('<tr><td>' + jsondata['drone_name'] + '</td>' + 
             '<td>[' + JSON.stringify(jsondata['white_vals'], null, 2).slice(2, -2).trim() + ']' +
             '[' + JSON.stringify(jsondata['red_val'], null, 2).trim() + ']</td></tr>');
-        $('#golden-ticket').text('[' + whitenums + '][' + rednum + ']');
+        $('#golden-ticket').replaceWith('<h4 id="golden-ticket" class="numbers">[' +
+            whitenums + ']<span class="powerball">[' + rednum + ']</span></h4>');
     }
 
     function form_invalid(jsondata) {

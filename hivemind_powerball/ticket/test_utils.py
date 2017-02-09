@@ -31,3 +31,6 @@ class TicketUtilityTest(TestCase):
         ticket = utils._composite_ticket(grouped, 5)
         self.assertIn(1, sorted(ticket))
         self.assertIn(2, sorted(ticket))
+
+    def test_ball_query_raises_correct_error_when_bad_data_passed_in(self):
+        self.assertRaises(TypeError, utils._ball_query_for, 'bad_input')

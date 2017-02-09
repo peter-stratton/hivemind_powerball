@@ -32,9 +32,7 @@ class HiveMindPowerballTest(unittest.TestCase):
 
         # The page title mentions powerball
         self.assertIn('POWERBALL', self.browser.title.upper())
-        # self.fail('Finish the test!')
-
-
+        self.fail('Finish the test!')
 
 
 # He enters his first name: Wade
