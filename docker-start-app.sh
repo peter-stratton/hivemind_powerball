@@ -19,6 +19,6 @@ do
 done
 
 if [ $PG_NOT_READY = true ]; then
-    echo "There's a problem starting the app! Use the troubleshooting command at the end of docker-start-app.sh to figure out what's broken."
+    echo "There's a problem starting the app! Use the troubleshooting command at the end of docker-compose.yml to figure out what's broken."
 fi
 

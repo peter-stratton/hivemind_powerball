@@ -7,7 +7,7 @@ from django.db import connection
 
 
 def _group_by_popularity(data):
-    """Given a sorted list of 22tuples where tuple[0] is a ticket number, and
+    """Given a sorted list of 2tuples where tuple[0] is a ticket number, and
     tuple[1] is the number of times it was selected by users, returns a new
     list of lists containing the tuples with tied tuple[1] values.  The sorting
     is expected to be by the tuple[1] value.
