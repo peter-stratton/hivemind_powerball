@@ -6,8 +6,24 @@ $(document).ready(function() {
 		create_ticket();
 	});
 
-    function success() { console.log('SUCCESS!'); }
-    function error() { console.log('FAIL!') }
+    function form_processed(jsondata) {
+        var whitenums = JSON.stringify(jsondata['golden_ticket'][0], null, 2).slice(2, -2).trim()
+        var rednum = JSON.stringify(jsondata['golden_ticket'][1], null, 2).slice(2, -2).trim()
+        $('.error-alert').remove();
+        $('#ticket-form')[0].reset();
+        $('#drone-table tr:first').after('<tr><td>' + jsondata['drone_name'] + '</td>' + 
+            '<td>[' + JSON.stringify(jsondata['white_vals'], null, 2).slice(2, -2).trim() + ']' +
+            '[' + JSON.stringify(jsondata['red_val'], null, 2).trim() + ']</td></tr>');
+        $('#golden-ticket').text('[' + whitenums + '][' + rednum + ']');
+    }
+
+    function form_invalid(jsondata) {
+        $('.error-alert').remove();
+        for(var e in jsondata['error_list']) {
+            console.log(e)
+            $("#form-errors").append('<div class="error-alert">'+ jsondata['error_list'][e] +'</div>')
+        }
+    }
 
 	function create_ticket() {
 		console.log("create ticket is working")  // sanity check
@@ -24,21 +40,18 @@ $(document).ready(function() {
 				white5: $('#id_white5').val(),
 				red1: $('#id_red1').val(),
 			},
-            error: function(xhr) {
-            	console.log(xhr.status + ": " + xhr.responseText);
-			},
 			success: function(json) {
-				console.log(json);
-				console.log("Success!");
-                var whitenums = JSON.stringify(json['golden_ticket'][0], null, 2).slice(2, -2).trim()
-                var rednum = JSON.stringify(json['golden_ticket'][1], null, 2).slice(2, -2).trim()
-				$('#ticket-form')[0].reset();
-                $('#drone-table tr:first').after('<tr><td>' + json['drone_name'] + '</td>' + 
-                    '<td>[' + JSON.stringify(json['white_vals'], null, 2).slice(2, -2).trim() + ']' +
-                    '[' + JSON.stringify(json['red_val'], null, 2).trim() + ']</td></tr>');
-                $('#golden-ticket').text('[' + whitenums + '][' + rednum + ']');
+                if(json['status'] === 'success') {
+                    console.log("Success!");
+                    form_processed(json)
+                } else {
+                    console.log("Failed!")
+                    form_invalid(json)
+                }
+            },
+			error: function(xhr) {
+            	console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
 			}
-			
 		});
 	};
 });

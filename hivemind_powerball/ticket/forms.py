@@ -32,4 +32,4 @@ class TicketForm(forms.Form):
                        cleaned_data.get('white5')]
         if has_duplicates(white_balls):
             raise forms.ValidationError(
-                "White ball values must be unique! Please remove duplicates.")
+                "Numbers 1 through 5 must be unique! <br>Please remove duplicates.")

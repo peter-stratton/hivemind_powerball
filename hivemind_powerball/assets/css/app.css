@@ -1,1 +1,11 @@
 /* app.cs */
+
+/* Alert Boxes */
+.error-alert {
+    background: #FC000080;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    margin-bottom: 2rem;
+}

@@ -25,9 +25,13 @@ def new_ticket(request):
             return HttpResponse(json.dumps({'drone_name': drone.full_name,
                                             'white_vals': white_vals,
                                             'red_val': data['red1'],
-                                            'golden_ticket': golden_ticket}),
+                                            'golden_ticket': golden_ticket,
+                                            'status': 'success'}),
                                 content_type="application/json")
         else:
-            return HttpResponse(form.errors.as_json)
+            return HttpResponse(json.dumps({'status': 'failure',
+                                            'error_list':
+                                            form.errors['__all__']}),
+                                content_type="application/json")
     else:
         raise Http404

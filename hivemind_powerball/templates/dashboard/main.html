@@ -22,11 +22,14 @@
     <div class="row">
       <div class="six columns">
         <h4>Add Ticket</h4>
-        <form action="/ticket/add/" method="POST" id="ticket-form">
-          {% csrf_token %}
-          {{ form }}
-          <button class="btn add-ticket">Add Ticket</button>
-        </form>
+        <div id="form-errors"></div>
+        <div>
+          <form action="/ticket/add/" method="POST" id="ticket-form">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn add-ticket">Add Ticket</button>
+          </form>
+        </div>
       </div>
 
       <div class="six columns">
