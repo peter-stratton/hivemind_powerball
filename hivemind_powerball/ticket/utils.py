@@ -65,7 +65,7 @@ def _ball_query_for(color):
     if color.upper() not in ['RED', 'WHITE']:
         raise TypeError
     cursor = connection.cursor()
-    cursor.execute("SELECT value, COUNT(value) FROM ticket_{}ball GROUP BY value ORDER BY 2 DESC".format(color))
+    cursor.execute("SELECT value, COUNT(value) FROM ticket_{}ball GROUP BY value ORDER BY 2 DESC".format(color.lower()))
     return cursor.fetchall()
 
 
@@ -103,14 +103,13 @@ def _composite_ticket(group_list, ticket_length):
         List: representing the composite ticket of most popular values
     """
     ticket = []
-    while len(ticket) < ticket_length:
-        for group in group_list:
-            if len(ticket) == ticket_length:
-                break  # stop if we've met the ticket_length
-            while len(ticket) < ticket_length and len(group) > 0:
-                # Pop values off the group randomly until
-                # we run out or meet ticket_length.
-                ticket.append(group.pop(randint(0, len(group) - 1))[0])
+    for group in group_list:
+        if len(ticket) == ticket_length:
+            break  # stop if we've met the ticket_length
+        while len(ticket) < ticket_length and len(group) > 0:
+            # Pop values off the group randomly until
+            # we run out or meet ticket_length.
+            ticket.append(group.pop(randint(0, len(group) - 1))[0])
     return ticket
 
 
